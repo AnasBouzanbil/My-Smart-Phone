@@ -1,0 +1,361 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;  
+  background-color: #000000;
+  user-select: none;
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none;
+}
+
+.phone {
+  background-image: url("./death_note.jpg");
+  height: 500px;
+  width: 280px;
+  border-radius: 45px;
+  border: 10px solid rgb(82, 72, 72);
+  border-bottom: 50px solid rgb(95, 90, 90);
+  border-top: 50px solid rgb(87, 82, 82);
+  position: relative;
+  display: grid;
+
+
+  overflow: hidden;
+}
+
+
+
+
+.status-bar {
+    color: #ffffff;
+    position: absolute;
+
+
+    display: var(--none, flex) ;
+    justify-content: space-between;
+    gap : 11em;
+    top : 3px;
+    height: 1em;
+    padding: .3em .25em 0 .95em ;
+    justify-content: space-between ;
+    
+
+}
+
+#content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#content-container h1 {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#content-container p {
+  font-size: 1.2em;
+  color: #555;
+  text-align: center;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+#content-container p br {
+  content: "";
+  display: block;
+  margin: 10px 0;
+}
+
+.status-bar__clock {
+
+    font-size: .53em ;
+    font-weight: bold ;
+    letter-spacing: .075em ; 
+    font-family: 'Rubik', sans-serif ;
+
+}
+
+.status-bar__img {
+
+    width: 2.85em ;
+
+}
+.screen {
+  top : 1.5rem;;
+  position: relative;
+
+}
+.screen-stc{
+  position: absolute;
+  top: 1%;
+  width: 20%;
+  height: 10%;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+.screen__close-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 1;
+  height: 20px;
+  widows: 20px;
+  cursor: pointer;
+  padding: 10px;
+  color: #ececec;
+}
+.screen__close-button::after, .screen__close-button::before {
+  content: "";
+  display: block;
+  height: 15px;
+  width: 2px;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+}
+.screen__close-button::after {
+  transform: rotate(-45deg);
+}
+.screen__close-button::before {
+  transform: rotate(45deg);
+}
+.screen--home {
+  grid-row: 1;
+  grid-column: 1;
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 30px;
+  justify-items: center;
+  align-items: center;
+  transition: transform 0.2s cubic-bezier(0.5, 0, 0.5, 1);
+}
+.screen--app {
+  color: white;
+  background-color: rgb(0, 0, 0);
+  height: 100%;
+  width: 100%;
+  grid-row: 1;
+  grid-column: 1;
+  display: none;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform-origin: top left;
+}
+.screen--app img {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+}
+
+.icon {
+  overflow: hidden;
+  background-color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: top left;
+  height: 50px;
+  width: 50px;
+}
+.icon img {
+  height: auto;
+  display: block;
+  transition: opacity 0.2s linear;
+  width: 55%;
+}
+#a{
+  position: absolute;
+  bottom:6.9%;
+}
+p{
+  color: rebeccapurple;
+}
+[data-open=app] .screen--home {
+  transform: scale(0.8);
+}
+[data-open=app] .screen__app-content {
+  animation: fadeIn 0.3s linear;
+  animation-fill-mode: both;
+  animation-delay: 0.4s;
+}
+[data-open=app] .screen--app {
+  /* border-radius: 25px; */
+}
+[data-open=app] .screen--app img {
+  animation: fadeOut 0.3s linear;
+  animation-fill-mode: both;
+}
+
+[data-open=home] .screen__app-content {
+  animation: fadeOut 0.3s linear;
+  animation-fill-mode: both;
+}
+[data-open=home] .screen--app {
+  animation: fadeOut 0.1s linear;
+  animation-fill-mode: both;
+  animation-delay: 0.3s;
+  border-radius: 30%;
+}
+[data-open=home] .screen--app img {
+  animation: fadeIn 0.3s linear;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+@keyframes move-background {
+  from {
+        -webkit-transform: translate3d(0px, 0px, 0px);
+    }
+    to { 
+        -webkit-transform: translate3d(1000px, 0px, 0px);
+    }
+}
+@-webkit-keyframes move-background {
+  from {
+        -webkit-transform: translate3d(0px, 0px, 0px);
+    }
+    to { 
+        -webkit-transform: translate3d(1000px, 0px, 0px);
+    }
+}
+
+@-moz-keyframes move-background {    
+    from {
+        -webkit-transform: translate3d(0px, 0px, 0px);
+    }
+    to { 
+        -webkit-transform: translate3d(1000px, 0px, 0px);
+    }
+}
+
+    @-webkit-keyframes move-background {
+    from {
+        -webkit-transform: translate3d(0px, 0px, 0px);
+    }
+    to { 
+        -webkit-transform: translate3d(1000px, 0px, 0px);
+    }
+}
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.stars {
+  background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+img {
+  -webkit-user-drag: none;
+  user-drag: none; 
+}
+.twinkling {
+  width: 100%;
+  height: 100%;
+  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+  background-size: 1000px 1000px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  animation: move-background 70s linear infinite;
+}
+
+.clouds {
+  width: 100%;
+  height: 100%;
+  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
+  background-size: 1000px 1000px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  animation: move-background 150s linear infinite;
+}
+
+
+.imgs{
+  height: 70vh;
+  width:70vh;
+  position: absolute;
+  z-index: 3;
+  right: 20px;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;  
+  background-color: #000000;
+}
+
+.phone {
+  background-image: url("./death_note.jpg");
+  height: 500px;
+  width: 280px;
+  border-radius: 45px;
+  border: 10px solid rgb(82, 72, 72);
+  border-bottom: 50px solid rgb(95, 90, 90);
+  border-top: 50px solid rgb(87, 82, 82);
+  position: relative;
+  display: grid;
+  overflow: hidden;
+}
+
+.status-bar {
+  color: #ffffff;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  gap: 11em;
+  top: 3px;
+  height: 1em;
+  padding: .3em .25em 0 .95em;
+}
